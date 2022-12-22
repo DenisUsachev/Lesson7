@@ -7,9 +7,6 @@
 Сумма элементов главной диагонали: 1+9+2 = 12*/
 
 
-
-
-
 int GetNumber(string message)
 {
     int result = 0;
@@ -63,15 +60,7 @@ int SumDiagonalElements(int[,] matrix)
 
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            if(i == j)
-            {
-                
-                sum += matrix[i,j];
-                
-            }
-        }
+        sum += matrix[i,j];
     }
     return sum;
 }
@@ -80,8 +69,15 @@ int SumDiagonalElements(int[,] matrix)
 
 int rows = GetNumber("Введите количество строк: ");
 int columns = GetNumber("Введите количество столбцов: ");
-int[,] matrix = InitMatrix(rows, columns);
-PrintMatrix(matrix);
 
-int sum = SumDiagonalElements(matrix);
-Console.WriteLine(sum);
+if(rows == columns)
+{
+    int[,] matrix = InitMatrix(rows, columns);
+    PrintMatrix(matrix);
+    int sum = SumDiagonalElements(matrix);
+    Console.WriteLine(sum);
+}
+else
+{
+    Console.WriteLine("Матрица не квадратная");
+}
